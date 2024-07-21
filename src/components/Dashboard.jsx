@@ -9,8 +9,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getLoggedInUser = async () => {
-      const { data } = await supabase.auth.getSession();
-      console.log({ data });
+      const { data, error } = await supabase.auth.getSession();
+      if (error) {
+        setError(error);
+        setUser(null);
+        return;
+      }
       setUser(data.session.user);
     };
     getLoggedInUser();

@@ -1,33 +1,28 @@
 import { useState } from "react";
 import supabase from "../supabase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [isRegistered, setIsRegistered] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: formData.get("email"),
       password: formData.get("password"),
     });
     console.log(data, error);
-    if (!error) {
-      setIsRegistered(true);
-    } else {
+    if (error) {
       setError(error.message);
+      return;
     }
-  };
 
-  if (isRegistered) {
-    return (
-      <div className="m-10 text-center font-bold">
-        You have successfully registered! Please check your email to verify your
-        account.
-      </div>
-    );
-  }
+    // Redirect to Dahsboard
+    return navigate(`/`);
+  };
 
   return (
     <div className="w-96 m-auto">

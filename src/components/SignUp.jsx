@@ -23,8 +23,7 @@ const SignUp = () => {
   if (isRegistered) {
     return (
       <div className="m-10 text-center font-bold">
-        You have successfully registered! Please check your email to verify your
-        account.
+        You have successfully registered!
       </div>
     );
   }

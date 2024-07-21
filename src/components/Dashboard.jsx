@@ -29,6 +29,11 @@ const Dashboard = () => {
     <div className="w-96 m-auto text-center">
       <h2 className="m-10 text-center text-2xl font-bold">Dashboard</h2>
       <div>You are logged in as {user?.email}.</div>
+      {error && (
+        <div className=" text-red-700 p-4 text-center" role="alert">
+          Error - {error}
+        </div>
+      )}
       <div>
         <a
           href="#"

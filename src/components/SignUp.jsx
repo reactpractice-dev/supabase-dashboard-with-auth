@@ -1,5 +1,6 @@
 import { useState } from "react";
 import supabase from "../supabase";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -24,6 +25,11 @@ const SignUp = () => {
     return (
       <div className="m-10 text-center font-bold">
         You have successfully registered!
+        <br />
+        Go ahead and &nbsp;
+        <Link to={"/login"} className="text-indigo-600 hover:text-indigo-500">
+          login with the new account.
+        </Link>
       </div>
     );
   }

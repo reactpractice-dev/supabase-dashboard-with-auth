@@ -15,10 +15,17 @@ const Dashboard = () => {
         setUser(null);
         return;
       }
-      setUser(data.session.user);
+      if (!data.session) {
+        // means user is not logged in
+        // so redirect to login page
+        navigate("/login");
+        return;
+      } else {
+        setUser(data.session.user);
+      }
     };
     getLoggedInUser();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();

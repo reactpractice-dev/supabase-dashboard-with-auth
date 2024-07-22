@@ -1,6 +1,7 @@
 import { useState } from "react";
 import supabase from "../supabase";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -47,19 +48,16 @@ const Login = () => {
         </div>
 
         <div>
-          <div className="flex items-center justify-between">
-            <label>Password</label>
-            <a href="#" className="text-indigo-600 hover:text-indigo-500">
-              Forgot password?
-            </a>
-          </div>
-          <input
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            required
-            className="w-full rounded-md p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 mb-2"
-          />
+          <label>
+            Password
+            <input
+              name="password"
+              type="password"
+              autoComplete="new-password"
+              required
+              className="w-full rounded-md p-1.5 shadow-sm ring-1 ring-inset ring-gray-300 mb-2"
+            />
+          </label>
         </div>
 
         <div>
@@ -71,6 +69,12 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <div className="mt-4">
+        Don&apos;t have an account yet?{" "}
+        <Link to={"/sign-up"} className="text-indigo-600 hover:text-indigo-500">
+          Register a new account
+        </Link>
+      </div>
     </div>
   );
 };

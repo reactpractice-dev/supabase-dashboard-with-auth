@@ -71,7 +71,7 @@ const Login = () => {
       </form>
       <div className="mt-4">
         Don&apos;t have an account yet?{" "}
-        <Link to={"/sign-up"} className="text-indigo-600 hover:text-indigo-500">
+        <Link to={"/signup"} className="text-indigo-600 hover:text-indigo-500">
           Register a new account
         </Link>
       </div>
